@@ -3,6 +3,7 @@ import ProductList from "./components/ProductList.jsx";
 
 export default function App() {
   const [name, setName] = useState("");
+  const [showProducts, setShowProducts] = useState(false);
 
   return (
     <div style={{ maxWidth: "550px", margin: "40px auto", fontFamily: "sans-serif", padding: "20px" }}>
@@ -25,6 +26,23 @@ export default function App() {
       <p style={{ fontSize: "1.1rem" }}>
         Hello, {name ? name : "Guest"}!
       </p>
+
+      <button
+        onClick={() => setShowProducts(!showProducts)}
+        style={{
+          backgroundColor: showProducts ? "#dc2626" : "#2563eb",
+          color: "#fff",
+          border: "none",
+          padding: "10px 16px",
+          borderRadius: "6px",
+          cursor: "pointer",
+          fontWeight: "bold"
+        }}
+      >
+        {showProducts ? "Hide Products" : "Show Products"}
+      </button>
+
+      {showProducts && <ProductList />}
     </div>
   );
 }
